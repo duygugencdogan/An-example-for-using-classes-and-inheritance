@@ -1,82 +1,82 @@
 
-pi = 3.1415  #pi sayısı
+pi = 3.1415  #pi 
 
-class Şekil():
-    def __init__(self,şekiladı,kenar1):
-        self.şekiladı = şekiladı
-        self.kenar1 = kenar1
-        print("Bu şekil bir {}dir.".format(self.şekiladı))
-
-
-class ÇeşitkenarUcgen(Şekil):
-    def __init__(self,şekiladı,kenar1,kenar2,kenar3):
-        self.şekiladı = şekiladı
-        self.kenar1 = kenar1
-        self.kenar2 = kenar2
-        self.kenar3 = kenar3
-
-    def cevrebulma(self,kenar1,kenar2,kenar3):
-        print(self.kenar1 + self.kenar2 + self.kenar3)  # (a+b+c)
-
-    def alanbulma(self,kenar1,kenar2,kenar3):   
-        s = (self.kenar1 + self.kenar2 + self.kenar3)/2
-        print((s*(s-self.kenar1)*(s-self.kenar2)*(s-self.kenar3))**(1/2))   # s*(s-a)*(s-b)*(s-c) nin karekökü
+class Shape():
+    def __init__(self,shapename,edge1):
+        self.shapename = shapename
+        self.edge1 = edge1
+        print("This shape is a {}.".format(self.shapename))
 
 
-class Dikdortgen(Şekil):
-    def __init__(self,şekiladı,kenar1,kenar2):
-        self.şekiladı = şekiladı
-        self.kenar1 = kenar1
-        self.kenar2 = kenar2
-    def cevrebulma(self,kenar1,kenar2):
-        print(2*(self.kenar1 + self.kenar2))  #2*(a+b)
+class ScalaneTriangle(Shape):
+    def __init__(self,shapename,edge1,edge2,edge3):
+        self.shapename = shapename
+        self.edge1 = edge1
+        self.edge2 = edge2
+        self.edge3 = edge3
 
-    def alanbulma(self,kenar1, kenar2):
-        print(self.kenar1 * self.kenar2) #2*a*b
+    def get_perimeter(self,edge1,edge2,edge3):
+        print(self.edge1 + self.edge2 + self.edge3)  # (a+b+c)
 
-class Kare(Şekil):
-    def cevrebulma(self,kenar1):
-        print(4 * self.kenar1)  # 4 kenar
-
-    def alanbulma(self,kenar1):
-        print(self.kenar1**2) # a kare
-
-class EşkenarUcgen(Şekil):
-    def cevrebulma(self,kenar1):
-        print(3 * self.kenar1)     #3 kenar
-    def alanbulma(self,kenar1):
-        print((self.kenar1**2)*(3**(1/2))/4)  #a karekök 3 bölü 4
-
-class Daire(Şekil):
-    def cevrebulma(self,yaricap):
-        yaricap = self.kenar1   #yariçap bir değişkendir.
-        print(2* pi * yaricap)  # 2 pi r
-
-    def alanbulma(self, yaricap):
-        print(pi*(yaricap**2)) #  pi r kare
+    def get_area(self,edge1,edge2,edge3):   
+        s = (self.edge1 + self.edge2 + self.edge3)/2
+        print((s*(s-self.edge1)*(s-self.edge2)*(s-self.edge3))**(1/2))   # square of s*(s-a)*(s-b)*(s-c) 
 
 
-#Dikdörtgen objesi oluşturup, class ta tanımlı fonksiyonlara erişmek
-Dikdortgen1 = Dikdortgen("Dikdörtgen",5,20)
-Dikdortgen1.cevrebulma(5,20)
-Dikdortgen1.alanbulma(5,20)
+class Rectangle(Shape):
+    def __init__(self,shapename,edge1,edge2):
+        self.shapename = shapename
+        self.edge1 = edge1
+        self.edge2 = edge2
+    def get_perimeter(self,edge1,edge2):
+        print(2*(self.edge1 + self.edge2))  #2*(a+b)
 
-#Kare objesi oluşturup, class ta tanımlı fonksiyonlara erişmek
-Kare1 = Kare("Kare",10)
-Kare1.cevrebulma(10)
-Kare1.alanbulma(10)
+    def get_area(self,edge1, edge2):
+        print(self.edge1 * self.edge2) #2*a*b
 
-#Daire objesi oluşturup, class ta tanımlı fonksiyonlara erişmek
-Daire1 = Daire("Daire",5)
-Daire1.cevrebulma(5)
-Daire1.alanbulma(5)
+class Square(Shape):
+    def get_perimeter(self,edge1):
+        print(4 * self.edge1)  # 4 edges
 
-#Eşkenar Üçgen objesi oluşturup, class ta tanımlı fonksiyonlara erişmek
-EskenarUcgen1 = EşkenarUcgen("Eşkenar Üçgen",10)
-EskenarUcgen1.cevrebulma(10)
-EskenarUcgen1.alanbulma(10)
+    def get_area(self,edge1):
+        print(self.edge1**2) # a square root
 
-#Çeşitkenar Üçgen objesi oluşturup, class ta tanımlı fonksiyonlara erişmek
-ÇeşitkenarUcgen1 = ÇeşitkenarUcgen("Çeşitkenar Üçgen",5,12,13)  # 5,12,13 aynı zamanda bir dik üçgen
-ÇeşitkenarUcgen1.cevrebulma(5,12,13)
-ÇeşitkenarUcgen1.alanbulma(5,12,13)
+class EquilateralTriangle(Shape):
+    def get_perimeter(self,edge1):
+        print(3 * self.edge1)     #3 edges
+    def get_area(self,edge1):
+        print((self.edge1**2)*(3**(1/2))/4)  #a square root * 3 divided by 4
+
+class Circle(Shape):
+    def get_perimeter(self,radius):
+        radius = self.edge1   #radius is a variable here.
+        print(2* pi * radius)  # 2 pi r
+
+    def get_area(self, radius):
+        print(pi*(radius**2)) #  pi r kare
+
+
+#Creating an object 
+rectangle1 = Rectangle("Rectangle",5,20)
+rectangle1.get_perimeter(5,20)
+rectangle1.get_area(5,20)
+
+#Creating an object
+square1 = Square("Square",10)
+square1.get_perimeter(10)
+square1.get_area(10)
+
+#Creating an object
+circle1 = Circle("Circle",5)
+circle1.get_perimeter(5)
+circle1.get_area(5)
+
+#Creating an object
+equilateralTriangle1 = EquilateralTriangle("Eşkenar Üçgen",10)
+equilateralTriangle1.get_perimeter(10)
+equilateralTriangle1.get_area(10)
+
+#Creating an object
+scalaneTriangle1 = ScalaneTriangle("Çeşitkenar Üçgen",5,12,13)  # 5,12,13 aynı zamanda bir dik üçgen
+scalaneTriangle1.get_perimeter(5,12,13)
+scalaneTriangle1.get_area(5,12,13)
