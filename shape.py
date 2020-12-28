@@ -72,11 +72,11 @@ circle1.get_perimeter(5)
 circle1.get_area(5)
 
 #Creating an object
-equilateralTriangle1 = EquilateralTriangle("Eşkenar Üçgen",10)
+equilateralTriangle1 = EquilateralTriangle("Equilateral Triangle",10)
 equilateralTriangle1.get_perimeter(10)
 equilateralTriangle1.get_area(10)
 
 #Creating an object
-scalaneTriangle1 = ScalaneTriangle("Çeşitkenar Üçgen",5,12,13)  # 5,12,13 aynı zamanda bir dik üçgen
+scalaneTriangle1 = ScalaneTriangle("Scalane Triangle",5,12,13)  # 5,12,13 is also a Right Triangle.
 scalaneTriangle1.get_perimeter(5,12,13)
 scalaneTriangle1.get_area(5,12,13)
